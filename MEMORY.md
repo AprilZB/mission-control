@@ -33,21 +33,31 @@ _最后更新：2026-03-18_
 
 ## 📦 项目
 
-### Mission Control 多 Agent 管理系统
+### Mission Control 虚拟办公室（多 Agent 管理系统）
 - **仓库**: https://github.com/AprilZB/mission-control
-- **Dashboard**: https://aprilzb.github.io/mission-control/
-- **状态**: 🚧 开发中
+- **Dashboard**: https://aprilzb.github.io/mission-control/ ✅ **已上线**
+- **状态**: ✅ 核心功能已完成
   - ✅ GitHub Pages 已启用
   - ✅ Tailscale Funnel 已配置 (https://ap-dev.tail7de964.ts.net)
   - ✅ GitHub Webhook 已配置
-  - ✅ 基础任务看板可用
-  - 🚧 多 Agent 可视化功能设计中
+  - ✅ **虚拟办公室 UI** - 3D 工位视图、Agent 状态可视化
+  - ✅ **任务分配引擎** - 关键词匹配、负载均衡、自动升级
+  - ✅ **性能统计** - Agent 效率追踪、成功率分析
   - ⚠️ OpenClaw 无内置 webhook 处理器，需轮询方案
 
-**多 Agent 扩展**:
-- `data/agents.json` - Agent 注册表（4 个 Agent：主助手、开发、文档、研究）
-- `docs/MULTI-AGENT-DESIGN.md` - 设计文档
-- 计划功能：Agent 状态面板、任务自动分配、负载均衡、性能指标
+**核心文件**:
+- `index.html` - 虚拟办公室 Dashboard（响应式设计）
+- `data/agents.json` - 4 个 Agent（主助手、开发、文档、研究）
+- `data/agent-stats.json` - Agent 性能统计
+- `config/agent-routes.json` - 任务分配规则配置
+- `scripts/task-assignment-engine.js` - 自动分配引擎
+- `docs/VIRTUAL-OFFICE.md` - 完整功能文档
+
+**Agent 团队**:
+- 🤖 主助手 (main-assistant) - WeCom 渠道、任务管理
+- 👨‍💻 开发助手 (dev-assistant) - 代码开发、调试
+- 📝 文档助手 (docs-assistant) - 文档写作、翻译
+- 🔬 研究助手 (research-assistant) - 网络搜索、分析
 
 ### 圆通快递货架项目
 - **位置**: `~/Desktop/WMS/上海青乾/`
