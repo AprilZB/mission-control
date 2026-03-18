@@ -1,0 +1,76 @@
+const fs = require('fs');
+const path = require('path');
+
+// 创建一个科技感的 SVG 头像 (贾维斯风格)
+const svgContent = `<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 渐变背景 -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a1a;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#1a1a3a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0d1b2a;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- 发光效果 -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- 内发光 -->
+    <filter id="innerGlow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+  
+  <!-- 背景圆 -->
+  <circle cx="256" cy="256" r="240" fill="url(#bgGrad)" stroke="#00d4ff" stroke-width="4"/>
+  <circle cx="256" cy="256" r="230" fill="none" stroke="#00d4ff" stroke-width="1" opacity="0.5"/>
+  <circle cx="256" cy="256" r="220" fill="none" stroke="#00d4ff" stroke-width="0.5" opacity="0.3"/>
+  
+  <!-- 弧形光效 -->
+  <path d="M 156 180 A 120 120 0 0 1 356 180" fill="none" stroke="#00d4ff" stroke-width="3" filter="url(#glow)" opacity="0.8"/>
+  <path d="M 176 200 A 100 100 0 0 1 336 200" fill="none" stroke="#00d4ff" stroke-width="2" opacity="0.5"/>
+  
+  <!-- J 字型主体 ( Jarvis 的 J ) -->
+  <g filter="url(#glow)">
+    <!-- J 的竖线 -->
+    <rect x="230" y="140" width="52" height="180" rx="8" fill="#00d4ff"/>
+    <!-- J 的底部弯钩 -->
+    <path d="M 230 320 Q 230 380 280 380 L 300 380 Q 350 380 350 330 L 350 300" 
+          fill="none" stroke="#00d4ff" stroke-width="52" stroke-linecap="round"/>
+  </g>
+  
+  <!-- 眼睛区域 (方舟反应堆风格) -->
+  <circle cx="256" cy="120" r="35" fill="#0a0a1a" stroke="#00d4ff" stroke-width="3" filter="url(#glow)"/>
+  <circle cx="256" cy="120" r="20" fill="#00d4ff" opacity="0.8"/>
+  <circle cx="256" cy="120" r="10" fill="#ffffff" opacity="0.9"/>
+  
+  <!-- 底部文字区域 -->
+  <rect x="156" y="400" width="200" height="60" rx="10" fill="#00d4ff" opacity="0.2"/>
+  <text x="256" y="440" font-family="Arial, sans-serif" font-size="28" font-weight="bold" 
+        fill="#00d4ff" text-anchor="middle" filter="url(#glow)">JARVIS</text>
+  
+  <!-- 装饰性光点 -->
+  <circle cx="100" cy="100" r="5" fill="#00d4ff" opacity="0.8"/>
+  <circle cx="412" cy="100" r="3" fill="#00d4ff" opacity="0.6"/>
+  <circle cx="80" cy="256" r="4" fill="#00d4ff" opacity="0.5"/>
+  <circle cx="432" cy="256" r="4" fill="#00d4ff" opacity="0.5"/>
+  <circle cx="120" cy="400" r="3" fill="#00d4ff" opacity="0.4"/>
+  <circle cx="392" cy="400" r="5" fill="#00d4ff" opacity="0.7"/>
+  
+  <!-- 数据流效果 -->
+  <line x1="180" y1="280" x2="200" y2="280" stroke="#00d4ff" stroke-width="2" opacity="0.6"/>
+  <line x1="312" y1="280" x2="332" y2="280" stroke="#00d4ff" stroke-width="2" opacity="0.6"/>
+  <line x1="220" y1="340" x2="240" y2="340" stroke="#00d4ff" stroke-width="2" opacity="0.4"/>
+  <line x1="272" y1="340" x2="292" y2="340" stroke="#00d4ff" stroke-width="2" opacity="0.4"/>
+</svg>`;
+
+const outputPath = path.join(__dirname, 'avatar.svg');
+fs.writeFileSync(outputPath, svgContent, 'utf8');
+console.log('Avatar created:', outputPath);
