@@ -5,37 +5,49 @@
       "name": "主助手",
       "type": "wecom",
       "status": "active",
-      "capabilities": ["task_management", "web_search", "file_operations"],
+      "avatar": "🤖",
+      "capabilities": ["task_management", "web_search", "file_operations", "communication"],
       "workspace": "~/.openclaw/workspace",
-      "model": "xiaolongxia/qwen3.5-plus"
+      "model": "xiaolongxia/qwen3.5-plus",
+      "maxLoad": 10,
+      "currentLoad": 3
     },
     {
       "id": "dev-assistant",
       "name": "开发助手",
       "type": "local",
-      "status": "idle",
-      "capabilities": ["coding", "debugging", "testing"],
+      "status": "busy",
+      "avatar": "👨‍💻",
+      "capabilities": ["coding", "debugging", "testing", "code_review"],
       "workspace": "~/.openclaw/workspace-dev",
-      "model": "xiaolongxia/qwen3.5-plus"
+      "model": "xiaolongxia/qwen3.5-plus",
+      "maxLoad": 8,
+      "currentLoad": 5
     },
     {
       "id": "docs-assistant",
       "name": "文档助手",
       "type": "local",
       "status": "idle",
-      "capabilities": ["documentation", "summarization"],
+      "avatar": "📝",
+      "capabilities": ["documentation", "writing", "summarization", "translation"],
       "workspace": "~/.openclaw/workspace-docs",
-      "model": "xiaolongxia/qwen3.5-plus"
+      "model": "xiaolongxia/qwen3.5-plus",
+      "maxLoad": 12,
+      "currentLoad": 1
     },
     {
       "id": "research-assistant",
       "name": "研究助手",
       "type": "local",
-      "status": "idle",
-      "capabilities": ["web_search", "analysis", "reporting"],
+      "status": "offline",
+      "avatar": "🔬",
+      "capabilities": ["web_search", "analysis", "reporting", "data_collection"],
       "workspace": "~/.openclaw/workspace-research",
-      "model": "xiaolongxia/qwen3.5-plus"
+      "model": "xiaolongxia/qwen3.5-plus",
+      "maxLoad": 6,
+      "currentLoad": 0
     }
   ],
-  "lastUpdated": "2026-03-18T13:50:00Z"
+  "lastUpdated": "2026-03-18T13:55:00Z"
 }
