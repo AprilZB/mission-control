@@ -43,6 +43,7 @@ _最后更新：2026-03-18_
   - ✅ **虚拟办公室 UI** - 3D 工位视图、Agent 状态可视化
   - ✅ **任务分配引擎** - 关键词匹配、负载均衡、自动升级
   - ✅ **性能统计** - Agent 效率追踪、成功率分析
+  - ✅ **提醒系统** - 工作日定时提醒、企业微信通知
   - ⚠️ OpenClaw 无内置 webhook 处理器，需轮询方案
 
 **核心文件**:
@@ -50,7 +51,9 @@ _最后更新：2026-03-18_
 - `data/agents.json` - 4 个 Agent（主助手、开发、文档、研究）
 - `data/agent-stats.json` - Agent 性能统计
 - `config/agent-routes.json` - 任务分配规则配置
+- `config/reminders.json` - 提醒配置
 - `scripts/task-assignment-engine.js` - 自动分配引擎
+- `scripts/reminder-engine.js` - 提醒引擎
 - `docs/VIRTUAL-OFFICE.md` - 完整功能文档
 
 **Agent 团队**:
@@ -58,6 +61,15 @@ _最后更新：2026-03-18_
 - 👨‍💻 开发助手 (dev-assistant) - 代码开发、调试
 - 📝 文档助手 (docs-assistant) - 文档写作、翻译
 - 🔬 研究助手 (research-assistant) - 网络搜索、分析
+
+### 🔔 活跃任务提醒
+
+**AI 架构汇报 PPT**
+- 任务 ID: `ai_ppt_executive`
+- 截止：2026-04-10
+- 提醒：工作日每 2 天 9:00（企业微信）
+- 下次提醒：2026-03-20 09:00
+- 进度：0/11 子任务
 
 ### 圆通快递货架项目
 - **位置**: `~/Desktop/WMS/上海青乾/`
