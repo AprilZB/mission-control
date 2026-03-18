@@ -18,13 +18,7 @@
         { "id": "sub_008", "title": "8. Test: Create a task, move to In Progress, verify MoltBot receives notification", "done": false }
       ],
       "priority": "high",
-      "comments": [
-        {
-          "author": "Mission Control",
-          "text": "Once all steps are complete, you can archive this guide or keep it as reference. Your setup is done when MoltBot responds to task changes!",
-          "timestamp": "2026-01-01T00:00:00Z"
-        }
-      ],
+      "comments": [],
       "createdAt": "2026-01-01T00:00:00Z"
     },
     {
@@ -34,75 +28,75 @@
       "status": "permanent",
       "project": "guides",
       "tags": ["guide", "help"],
-      "subtasks": [
-        { "id": "sub_001", "title": "— THE BOARD —", "done": false },
-        { "id": "sub_002", "title": "Columns: Permanent (recurring) → Backlog → In Progress → Review → Done", "done": false },
-        { "id": "sub_003", "title": "Drag & Drop: Move tasks between columns to change status", "done": false },
-        { "id": "sub_004", "title": "Click task card to open details and edit", "done": false },
-        { "id": "sub_005", "title": "— CREATING TASKS —", "done": false },
-        { "id": "sub_006", "title": "👤 You: Click '+' button in any column header", "done": false },
-        { "id": "sub_007", "title": "🤖 MoltBot: Edits data/tasks.json or uses CLI", "done": false },
-        { "id": "sub_008", "title": "— TASK DETAILS —", "done": false },
-        { "id": "sub_009", "title": "Title: Short, clear name for the task", "done": false },
-        { "id": "sub_010", "title": "Description: Detailed instructions (Markdown supported)", "done": false },
-        { "id": "sub_011", "title": "Subtasks: Break work into smaller steps (checkable)", "done": false },
-        { "id": "sub_012", "title": "Comments: Add notes, feedback, or progress updates", "done": false },
-        { "id": "sub_013", "title": "Priority: High (🔴) / Medium (🟡) / Low (🟢)", "done": false },
-        { "id": "sub_014", "title": "Project: Organize tasks by project/category", "done": false },
-        { "id": "sub_015", "title": "— WORKFLOW WITH MOLTBOT —", "done": false },
-        { "id": "sub_016", "title": "1. Create task in Backlog with clear description", "done": false },
-        { "id": "sub_017", "title": "2. Move to 'In Progress' → MoltBot gets notified via webhook", "done": false },
-        { "id": "sub_018", "title": "3. MoltBot works on task, updates subtasks & adds comments", "done": false },
-        { "id": "sub_019", "title": "4. MoltBot moves to 'Review' when done", "done": false },
-        { "id": "sub_020", "title": "5. You review: Approve → Done, or add feedback → back to In Progress", "done": false },
-        { "id": "sub_021", "title": "— DASHBOARD FEATURES —", "done": false },
-        { "id": "sub_022", "title": "🔍 Search: Filter tasks by text", "done": false },
-        { "id": "sub_023", "title": "📁 Project filter: Click project buttons to filter", "done": false },
-        { "id": "sub_024", "title": "⚙️ Settings: Add/edit projects", "done": false },
-        { "id": "sub_025", "title": "📦 Archive: Store completed tasks out of sight", "done": false },
-        { "id": "sub_026", "title": "👥 Team: See repo collaborators (if public)", "done": false },
-        { "id": "sub_027", "title": "📚 Docs: Built-in documentation", "done": false },
-        { "id": "sub_028", "title": "— MOLTBOT CAPABILITIES —", "done": false },
-        { "id": "sub_029", "title": "🤖 Can CREATE tasks (via CLI or JSON)", "done": false },
-        { "id": "sub_030", "title": "🤖 Can UPDATE task status, subtasks, comments", "done": false },
-        { "id": "sub_031", "title": "🤖 Can MOVE tasks between columns", "done": false },
-        { "id": "sub_032", "title": "🤖 Can DELETE/archive tasks", "done": false },
-        { "id": "sub_033", "title": "🤖 Receives WEBHOOK when you move tasks to In Progress", "done": false }
-      ],
+      "subtasks": [],
       "priority": "medium",
-      "comments": [
-        {
-          "author": "Mission Control",
-          "text": "This guide stays in Permanent so you can always reference it. The subtasks aren't meant to be 'completed' — they're documentation!",
-          "timestamp": "2026-01-01T00:00:00Z"
-        }
-      ],
+      "comments": [],
       "createdAt": "2026-01-01T00:00:01Z"
     },
     {
       "id": "task_example",
-      "title": "Example Task — Delete me when ready!",
-      "description": "This is an example of what a real task looks like. Feel free to edit or delete it.\n\n**Good task descriptions include:**\n- What needs to be done\n- Why it matters\n- Any constraints or requirements\n- Links to relevant resources",
+      "title": "示例任务 - 可删除",
+      "description": "这是一个示例任务，展示任务结构。熟悉后可以删除。",
       "status": "backlog",
       "project": "default",
       "tags": ["example"],
       "subtasks": [
-        { "id": "sub_001", "title": "First step of the task", "done": false },
-        { "id": "sub_002", "title": "Second step", "done": false },
-        { "id": "sub_003", "title": "Final step", "done": false }
+        { "id": "sub_001", "title": "第一步", "done": false },
+        { "id": "sub_002", "title": "第二步", "done": false },
+        { "id": "sub_003", "title": "完成", "done": false }
       ],
       "priority": "low",
       "comments": [],
       "createdAt": "2026-01-01T00:00:02Z"
+    },
+    {
+      "id": "ai_ppt_executive",
+      "title": "📊 AI 架构汇报 PPT - 面向高层",
+      "description": "整合 AI 架构、已部署硬件、已实现 AI Agent、未来规划，制作一份面向高层汇报的 PPT。\n\n**汇报目标：**\n- 展示 AI 建设成果\n- 说明硬件投入和部署情况\n- 演示已实现的 AI Agent 能力\n- 阐述未来发展规划\n- 争取更多资源支持\n\n**受众：** 公司高层管理层\n**时长：** 预计 30 分钟汇报 + 15 分钟问答",
+      "status": "backlog",
+      "project": "executive",
+      "tags": ["ppt", "ai", "executive", "presentation"],
+      "priority": "high",
+      "assignedAgent": "docs-assistant",
+      "dueDate": "2026-04-10",
+      "reminder": {
+        "enabled": true,
+        "frequency": "weekdays_every_2_days",
+        "time": "09:00",
+        "timezone": "Asia/Shanghai",
+        "nextReminder": "2026-03-20T09:00:00+08:00",
+        "channel": "wecom"
+      },
+      "subtasks": [
+        { "id": "sub_001", "title": "收集 AI 架构设计文档和架构图", "done": false },
+        { "id": "sub_002", "title": "整理已部署硬件清单（服务器、GPU、网络设备等）", "done": false },
+        { "id": "sub_003", "title": "统计硬件投入成本和部署时间线", "done": false },
+        { "id": "sub_004", "title": "梳理已实现的 AI Agent 列表和功能", "done": false },
+        { "id": "sub_005", "title": "准备 AI Agent 演示素材（截图、视频、数据）", "done": false },
+        { "id": "sub_006", "title": "制定未来 6-12 个月 AI 发展规划", "done": false },
+        { "id": "sub_007", "title": "估算未来规划所需资源和预算", "done": false },
+        { "id": "sub_008", "title": "设计 PPT 结构和大纲", "done": false },
+        { "id": "sub_009", "title": "制作 PPT 初稿", "done": false },
+        { "id": "sub_010", "title": "内部评审和修改", "done": false },
+        { "id": "sub_011", "title": "最终定稿和演练", "done": false }
+      ],
+      "comments": [
+        {
+          "author": "ZhangBo",
+          "text": "创建任务。截止时间 2026-04-10，工作日每两天 9 点提醒一次。",
+          "timestamp": "2026-03-18T17:55:00+08:00"
+        }
+      ],
+      "createdAt": "2026-03-18T17:55:00+08:00"
     }
   ],
   "projects": [
-    { "id": "guides", "name": "Guides", "color": "#10b981", "icon": "📚" },
-    { "id": "default", "name": "My Project", "color": "#3b82f6", "icon": "📁" }
+    { "id": "guides", "name": "指南", "color": "#10b981", "icon": "📚" },
+    { "id": "default", "name": "默认项目", "color": "#3b82f6", "icon": "📁" },
+    { "id": "executive", "name": "高层汇报", "color": "#8b5cf6", "icon": "📊" }
   ],
   "activities": [
-    { "type": "created", "actor": "Mission Control", "task": "Onboarding Guide", "time": "just now" },
-    { "type": "created", "actor": "Mission Control", "task": "User Guide", "time": "just now" }
+    { "type": "created", "actor": "ZhangBo", "task": "AI 架构汇报 PPT", "time": "just now" }
   ],
-  "lastUpdated": "2026-01-01T00:00:00Z"
+  "lastUpdated": "2026-03-18T17:55:00+08:00"
 }

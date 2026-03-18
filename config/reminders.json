@@ -1,0 +1,25 @@
+{
+  "version": "1.0.0",
+  "reminders": [
+    {
+      "id": "reminder_001",
+      "taskId": "ai_ppt_executive",
+      "title": "📊 AI 架构汇报 PPT 制作提醒",
+      "enabled": true,
+      "schedule": {
+        "type": "weekdays_every_2_days",
+        "time": "09:00",
+        "timezone": "Asia/Shanghai"
+      },
+      "channel": "wecom",
+      "recipient": "ZhangBo",
+      "message": "🔔 提醒：AI 架构汇报 PPT 制作任务\n\n📅 截止日期：2026-04-10\n⏰ 剩余天数：{days_left} 天\n📊 当前进度：{progress}%\n\n请尽快推进任务进展！",
+      "startDate": "2026-03-20",
+      "endDate": "2026-04-10",
+      "lastSent": null,
+      "nextSend": "2026-03-20T09:00:00+08:00",
+      "sentCount": 0
+    }
+  ],
+  "lastUpdated": "2026-03-18T17:55:00+08:00"
+}
