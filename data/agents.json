@@ -1,0 +1,41 @@
+{
+  "agents": [
+    {
+      "id": "main-assistant",
+      "name": "主助手",
+      "type": "wecom",
+      "status": "active",
+      "capabilities": ["task_management", "web_search", "file_operations"],
+      "workspace": "~/.openclaw/workspace",
+      "model": "xiaolongxia/qwen3.5-plus"
+    },
+    {
+      "id": "dev-assistant",
+      "name": "开发助手",
+      "type": "local",
+      "status": "idle",
+      "capabilities": ["coding", "debugging", "testing"],
+      "workspace": "~/.openclaw/workspace-dev",
+      "model": "xiaolongxia/qwen3.5-plus"
+    },
+    {
+      "id": "docs-assistant",
+      "name": "文档助手",
+      "type": "local",
+      "status": "idle",
+      "capabilities": ["documentation", "summarization"],
+      "workspace": "~/.openclaw/workspace-docs",
+      "model": "xiaolongxia/qwen3.5-plus"
+    },
+    {
+      "id": "research-assistant",
+      "name": "研究助手",
+      "type": "local",
+      "status": "idle",
+      "capabilities": ["web_search", "analysis", "reporting"],
+      "workspace": "~/.openclaw/workspace-research",
+      "model": "xiaolongxia/qwen3.5-plus"
+    }
+  ],
+  "lastUpdated": "2026-03-18T13:50:00Z"
+}

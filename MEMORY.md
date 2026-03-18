@@ -33,14 +33,21 @@ _最后更新：2026-03-18_
 
 ## 📦 项目
 
-### Mission Control（任务管理系统）
+### Mission Control 多 Agent 管理系统
 - **仓库**: https://github.com/AprilZB/mission-control
 - **Dashboard**: https://aprilzb.github.io/mission-control/
-- **状态**: ⚠️ 部分完成
+- **状态**: 🚧 开发中
   - ✅ GitHub Pages 已启用
-  - ✅ Tailscale Funnel 已配置
-  - ✅ GitHub Webhook 已添加
+  - ✅ Tailscale Funnel 已配置 (https://ap-dev.tail7de964.ts.net)
+  - ✅ GitHub Webhook 已配置
+  - ✅ 基础任务看板可用
+  - 🚧 多 Agent 可视化功能设计中
   - ⚠️ OpenClaw 无内置 webhook 处理器，需轮询方案
+
+**多 Agent 扩展**:
+- `data/agents.json` - Agent 注册表（4 个 Agent：主助手、开发、文档、研究）
+- `docs/MULTI-AGENT-DESIGN.md` - 设计文档
+- 计划功能：Agent 状态面板、任务自动分配、负载均衡、性能指标
 
 ### 圆通快递货架项目
 - **位置**: `~/Desktop/WMS/上海青乾/`
