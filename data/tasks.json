@@ -3,20 +3,11 @@
     {
       "id": "guide_onboarding",
       "title": "🚀 Onboarding Guide — Set Up Mission Control",
-      "description": "Welcome to Mission Control! Follow these steps to complete your setup. Work through each subtask in order.\n\n**Tip:** Click on a subtask to see detailed instructions. Check it off when done.",
+      "description": "Welcome to Mission Control! Follow these steps to complete your setup. Work through each subtask in order.",
       "status": "permanent",
       "project": "guides",
       "tags": ["guide", "setup"],
-      "subtasks": [
-        { "id": "sub_001", "title": "1. Enable GitHub Pages: Settings → Pages → Branch: main → Save", "done": false },
-        { "id": "sub_002", "title": "2. Create GitHub Token: github.com/settings/tokens → Generate (classic) → Scope: repo", "done": false },
-        { "id": "sub_003", "title": "3. Connect Dashboard: Open your GitHub Pages URL → Click 'Connect GitHub' → Paste token", "done": false },
-        { "id": "sub_004", "title": "4. Install Tailscale: brew install tailscale && tailscale up", "done": false },
-        { "id": "sub_005", "title": "5. Enable Funnel: tailscale funnel 18789 → Copy your URL", "done": false },
-        { "id": "sub_006", "title": "6. Generate Webhook Token: openssl rand -hex 32 → Save it", "done": false },
-        { "id": "sub_007", "title": "7. Add GitHub Webhook: Settings → Webhooks → Add → URL: https://YOUR-TAILSCALE-URL/hooks/github?token=YOUR-TOKEN", "done": false },
-        { "id": "sub_008", "title": "8. Test: Create a task, move to In Progress, verify MoltBot receives notification", "done": false }
-      ],
+      "subtasks": [],
       "priority": "high",
       "comments": [],
       "createdAt": "2026-01-01T00:00:00Z"
@@ -24,7 +15,7 @@
     {
       "id": "guide_user",
       "title": "📖 User Guide — How to Use Mission Control",
-      "description": "Learn how to use Mission Control effectively. Both you AND MoltBot can manage tasks!\n\n**Two ways to manage tasks:**\n• 👤 **You** — Use the Dashboard UI (drag & drop, buttons, forms)\n• 🤖 **MoltBot** — Uses CLI scripts or edits tasks.json directly",
+      "description": "Learn how to use Mission Control effectively.",
       "status": "permanent",
       "project": "guides",
       "tags": ["guide", "help"],
@@ -40,11 +31,7 @@
       "status": "backlog",
       "project": "default",
       "tags": ["example"],
-      "subtasks": [
-        { "id": "sub_001", "title": "第一步", "done": false },
-        { "id": "sub_002", "title": "第二步", "done": false },
-        { "id": "sub_003", "title": "完成", "done": false }
-      ],
+      "subtasks": [],
       "priority": "low",
       "comments": [],
       "createdAt": "2026-01-01T00:00:02Z"
@@ -52,7 +39,7 @@
     {
       "id": "ai_ppt_executive",
       "title": "📊 AI 架构汇报 PPT - 面向高层",
-      "description": "**张勃的工作任务** - 整合 AI 架构、已部署硬件、已实现 AI Agent、未来规划，制作一份面向高层汇报的 PPT。\n\n**汇报目标：**\n- 展示 AI 建设成果\n- 说明硬件投入和部署情况\n- 演示已实现的 AI Agent 能力\n- 阐述未来发展规划\n- 争取更多资源支持\n\n**受众：** 公司高层管理层\n**时长：** 预计 30 分钟汇报 + 15 分钟问答\n\n**AI 助手支持：** 提供框架建议、材料清单、可视化元素设计",
+      "description": "**张勃的工作任务** - 整合 AI 架构、已部署硬件、已实现 AI Agent、未来规划，制作一份面向高层汇报的 PPT。",
       "status": "backlog",
       "project": "executive",
       "tags": ["ppt", "ai", "executive", "presentation", "manual"],
@@ -69,32 +56,40 @@
         "channel": "wecom"
       },
       "subtasks": [
-        { "id": "sub_001", "title": "准备材料清单（AI 助手协助）", "done": false },
-        { "id": "sub_002", "title": "收集 AI 架构设计文档和架构图", "done": false },
-        { "id": "sub_003", "title": "整理已部署硬件清单（服务器、GPU、网络设备等）", "done": false },
-        { "id": "sub_004", "title": "统计硬件投入成本和部署时间线", "done": false },
-        { "id": "sub_005", "title": "梳理已实现的 AI Agent 列表和功能", "done": false },
-        { "id": "sub_006", "title": "准备 AI Agent 演示素材（截图、视频、数据）", "done": false },
-        { "id": "sub_007", "title": "制定未来 6-12 个月 AI 发展规划", "done": false },
-        { "id": "sub_008", "title": "估算未来规划所需资源和预算", "done": false },
-        { "id": "sub_009", "title": "设计 PPT 结构和大纲", "done": false },
-        { "id": "sub_010", "title": "制作 PPT 初稿", "done": false },
-        { "id": "sub_011", "title": "内部评审和修改", "done": false },
-        { "id": "sub_012", "title": "最终定稿和演练", "done": false }
+        { "id": "sub_001", "title": "准备材料清单（AI 助手协助）", "done": false }
       ],
+      "comments": [],
+      "createdAt": "2026-03-18T17:55:00+08:00"
+    },
+    {
+      "id": "meeting_20260319",
+      "title": "📅 会议 - 明天上午 10:30",
+      "description": "会议提醒任务",
+      "status": "backlog",
+      "project": "default",
+      "tags": ["meeting", "reminder"],
+      "priority": "high",
+      "assignedAgent": null,
+      "manualTask": true,
+      "meetingTime": "2026-03-19T10:30:00+08:00",
+      "reminder": {
+        "enabled": true,
+        "type": "one_time",
+        "beforeMinutes": 30,
+        "time": "10:00",
+        "date": "2026-03-19",
+        "timezone": "Asia/Shanghai",
+        "channel": "wecom"
+      },
+      "subtasks": [],
       "comments": [
         {
           "author": "ZhangBo",
-          "text": "创建任务。截止时间 2026-04-10，工作日每两天 9 点提醒一次。",
-          "timestamp": "2026-03-18T17:55:00+08:00"
-        },
-        {
-          "author": "AI Assistant",
-          "text": "已更新任务说明。这是您的工作任务，我会协助提供框架建议和材料清单。需要我帮您准备什么材料请随时告诉我。",
-          "timestamp": "2026-03-18T18:02:00+08:00"
+          "text": "明天上午十点半有个会议。",
+          "timestamp": "2026-03-18T19:26:00+08:00"
         }
       ],
-      "createdAt": "2026-03-18T17:55:00+08:00"
+      "createdAt": "2026-03-18T19:26:00+08:00"
     }
   ],
   "projects": [
@@ -103,7 +98,7 @@
     { "id": "executive", "name": "高层汇报", "color": "#8b5cf6", "icon": "📊" }
   ],
   "activities": [
-    { "type": "created", "actor": "ZhangBo", "task": "AI 架构汇报 PPT", "time": "just now" }
+    { "type": "created", "actor": "ZhangBo", "task": "会议提醒", "time": "just now" }
   ],
-  "lastUpdated": "2026-03-18T17:55:00+08:00"
+  "lastUpdated": "2026-03-18T19:26:00+08:00"
 }
