@@ -1,0 +1,38 @@
+{
+  "main-assistant": {
+    "totalAssigned": 15,
+    "totalCompleted": 15,
+    "totalEscalated": 0,
+    "avgCompletionTime": 45,
+    "successRate": 100,
+    "lastActive": "2026-03-18T13:50:00Z",
+    "specialties": ["task_management", "web_search", "file_operations", "communication"]
+  },
+  "dev-assistant": {
+    "totalAssigned": 42,
+    "totalCompleted": 40,
+    "totalEscalated": 2,
+    "avgCompletionTime": 120,
+    "successRate": 95,
+    "lastActive": "2026-03-18T12:30:00Z",
+    "specialties": ["coding", "debugging", "testing", "code_review"]
+  },
+  "docs-assistant": {
+    "totalAssigned": 28,
+    "totalCompleted": 28,
+    "totalEscalated": 0,
+    "avgCompletionTime": 30,
+    "successRate": 100,
+    "lastActive": "2026-03-18T11:15:00Z",
+    "specialties": ["documentation", "writing", "summarization", "translation"]
+  },
+  "research-assistant": {
+    "totalAssigned": 19,
+    "totalCompleted": 17,
+    "totalEscalated": 2,
+    "avgCompletionTime": 180,
+    "successRate": 89,
+    "lastActive": "2026-03-18T09:00:00Z",
+    "specialties": ["web_search", "analysis", "reporting", "data_collection"]
+  }
+}
