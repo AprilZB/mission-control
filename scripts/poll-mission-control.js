@@ -118,19 +118,15 @@ function processTask(task) {
   log(`  优先级：${task.priority || 'medium'}`, 'blue');
   log(`  子任务：${task.subtasks?.length || 0} 个`, 'blue');
   
-  // 这里可以：
-  // 1. 发送通知到企业微信
-  // 2. 调用 OpenClaw API 创建会话
-  // 3. 记录到日志文件
-  
-  // 示例：写入处理日志
+  // 1. 写入处理日志
   const logFile = path.join(CONFIG.workspace, 'data/.task-processing.log');
   const logEntry = {
     timestamp: new Date().toISOString(),
     taskId: task.id,
     title: task.title,
     status: task.status,
-    action: 'detected'
+    action: 'detected',
+    assignedAgent: task.assignedAgent || 'unassigned'
   };
   
   try {
@@ -139,8 +135,45 @@ function processTask(task) {
       : [];
     existing.push(logEntry);
     fs.writeFileSync(logFile, JSON.stringify(existing, null, 2), 'utf8');
+    log('已记录到处理日志', 'green');
   } catch (error) {
     log(`写入日志失败：${error.message}`, 'red');
+  }
+
+  // 2. 发送企业微信通知（如果配置了）
+  sendWeComNotification(task);
+}
+
+// 发送企业微信通知
+function sendWeComNotification(task) {
+  const notificationFile = path.join(CONFIG.workspace, 'data/.wecom-notifications.json');
+  
+  const notification = {
+    timestamp: new Date().toISOString(),
+    taskId: task.id,
+    title: task.title,
+    description: task.description,
+    priority: task.priority,
+    status: task.status,
+    assignedAgent: task.assignedAgent,
+    channel: 'wecom',
+    recipient: 'ZhangBo',
+    messageType: 'new_task'
+  };
+
+  try {
+    const existing = fs.existsSync(notificationFile) 
+      ? JSON.parse(fs.readFileSync(notificationFile, 'utf8')) 
+      : [];
+    existing.push(notification);
+    fs.writeFileSync(notificationFile, JSON.stringify(existing, null, 2), 'utf8');
+    log('已写入企业微信通知队列', 'green');
+    
+    // 说明：实际发送需要 OpenClaw 网关轮询这个文件并发送
+    // 或者通过 OpenClaw 的 API 直接发送
+    log('提示：OpenClaw 网关会轮询此文件并发送通知', 'yellow');
+  } catch (error) {
+    log(`写入通知失败：${error.message}`, 'red');
   }
 }
 
