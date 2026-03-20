@@ -274,8 +274,30 @@
             font-size: 0.75rem;
             font-weight: 600;
             background: rgba(255, 255, 255, 0.3);
-            color: white;
             backdrop-filter: blur(5px);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        
+        .status-badge.active {
+            background: rgba(125, 211, 160, 0.3);
+            color: var(--accent-green);
+        }
+        
+        .status-badge.busy {
+            background: rgba(255, 218, 185, 0.3);
+            color: var(--accent-yellow);
+        }
+        
+        .status-badge.idle {
+            background: rgba(111, 163, 212, 0.3);
+            color: var(--accent-blue);
+        }
+        
+        .status-badge.offline {
+            background: rgba(255, 143, 163, 0.3);
+            color: var(--accent-pink);
         }
 
         .task-list {
@@ -654,10 +676,10 @@
                 <span>虚拟办公室</span>
             </div>
             <nav class="nav-tabs">
-                <div class="nav-tab active">办公室视图</div>
-                <div class="nav-tab">任务看板</div>
-                <div class="nav-tab">Agent 管理</div>
-                <div class="nav-tab">统计报表</div>
+                <div class="nav-tab active" onclick="switchView('office')">办公室视图</div>
+                <div class="nav-tab" onclick="switchView('tasks')">任务看板</div>
+                <div class="nav-tab" onclick="switchView('agents')">Agent 管理</div>
+                <div class="nav-tab" onclick="switchView('stats')">统计报表</div>
             </nav>
         </div>
         <div class="header-right">
@@ -883,7 +905,7 @@
                                 <div class="desk-agent">${agent.avatar || '🤖'}</div>
                                 <span>${agent.name}的工位</span>
                             </div>
-                            <span class="status-badge">${getStatusText(agent.status)}</span>
+                            ${getStatusBadge(agent.status)}
                         </div>
                         <div class="task-list">
                             ${agentTaskList.length > 0 ? 
@@ -1067,6 +1089,17 @@
         }
 
         // 辅助函数
+        function getStatusBadge(status) {
+            const map = {
+                'active': { emoji: '🟢', text: '工作中', class: 'active' },
+                'busy': { emoji: '🟡', text: '忙碌', class: 'busy' },
+                'idle': { emoji: '🔵', text: '空闲', class: 'idle' },
+                'offline': { emoji: '🔴', text: '离线', class: 'offline' }
+            };
+            const config = map[status] || { emoji: '⚪', text: status, class: 'idle' };
+            return `<span class="status-badge ${config.class}">${config.emoji} ${config.text}</span>`;
+        }
+        
         function getStatusText(status) {
             const map = {
                 'active': '🟢 工作中',
@@ -1220,7 +1253,7 @@
                                 </div>
                             </div>
                             <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center;">
-                                <span style="font-size: 0.875rem; color: var(--text-secondary);">状态：${getStatusText(agent.status)}</span>
+                                <span style="font-size: 0.875rem;">状态：${getStatusBadge(agent.status)}</span>
                                 <button class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.75rem;" onclick="configureAgent('${agent.id}')">⚙️ 配置</button>
                             </div>
                         </div>
