@@ -6,22 +6,32 @@
     <title>虚拟办公室 - Mission Control</title>
     <style>
         :root {
-            --bg-primary: #0f172a;
-            --bg-secondary: #1e293b;
-            --bg-card: #334155;
-            --bg-desk: #475569;
-            --text-primary: #f1f5f9;
-            --text-secondary: #94a3b8;
-            --accent-blue: #3b82f6;
-            --accent-green: #10b981;
-            --accent-yellow: #f59e0b;
-            --accent-red: #ef4444;
-            --accent-purple: #8b5cf6;
-            --accent-pink: #ec4899;
-            --border: #475569;
-            --success: #22c55e;
-            --warning: #f59e0b;
-            --error: #ef4444;
+            /* 马卡龙等距视角配色 */
+            --bg-primary: #1a1a2e;
+            --bg-secondary: #16213e;
+            --bg-floor: #0f3460;
+            --bg-wall: #1a1a2e;
+            
+            --text-primary: #eaeaea;
+            --text-secondary: #a0a0a0;
+            
+            /* 马卡龙色系 */
+            --macaron-pink: #ffb7c5;
+            --macaron-blue: #aec6cf;
+            --macaron-green: #b8e6d5;
+            --macaron-yellow: #fdfd96;
+            --macaron-purple: #d7bde2;
+            --macaron-orange: #ffdab9;
+            
+            --accent-pink: #ff8fa3;
+            --accent-blue: #6fa3d4;
+            --accent-green: #7dd3a0;
+            --accent-yellow: #f0e68c;
+            --accent-purple: #b19cd9;
+            --accent-orange: #ffb380;
+            
+            --border: #2d4a6f;
+            --shadow: rgba(0, 0, 0, 0.4);
         }
 
         * {
@@ -32,7 +42,7 @@
 
         body {
             font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
-            background: var(--bg-primary);
+            background: linear-gradient(180deg, var(--bg-wall) 0%, var(--bg-floor) 100%);
             color: var(--text-primary);
             min-height: 100vh;
             overflow-x: hidden;
@@ -44,12 +54,13 @@
             justify-content: space-between;
             align-items: center;
             padding: 1rem 2rem;
-            background: var(--bg-secondary);
+            background: rgba(22, 33, 62, 0.95);
             border-bottom: 2px solid var(--border);
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px var(--shadow);
         }
 
         .header-left {
@@ -64,13 +75,15 @@
             display: flex;
             align-items: center;
             gap: 0.75rem;
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            background: linear-gradient(135deg, var(--macaron-pink), var(--macaron-purple));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 10px rgba(255, 183, 197, 0.3);
         }
 
         .logo-icon {
             font-size: 2rem;
+            filter: drop-shadow(0 2px 4px var(--shadow));
         }
 
         .nav-tabs {
@@ -80,21 +93,24 @@
 
         .nav-tab {
             padding: 0.5rem 1.25rem;
-            border-radius: 8px;
+            border-radius: 20px;
             cursor: pointer;
             color: var(--text-secondary);
-            transition: all 0.2s;
+            transition: all 0.3s;
             font-weight: 500;
+            background: rgba(255, 255, 255, 0.05);
         }
 
         .nav-tab:hover {
-            background: var(--bg-card);
+            background: rgba(255, 255, 255, 0.1);
             color: var(--text-primary);
+            transform: translateY(-2px);
         }
 
         .nav-tab.active {
-            background: var(--accent-blue);
+            background: linear-gradient(135deg, var(--macaron-blue), var(--macaron-purple));
             color: white;
+            box-shadow: 0 4px 12px rgba(174, 198, 207, 0.4);
         }
 
         .header-right {
@@ -105,54 +121,272 @@
 
         .btn {
             padding: 0.625rem 1.25rem;
-            border-radius: 8px;
+            border-radius: 20px;
             border: none;
             cursor: pointer;
             font-size: 0.875rem;
-            font-weight: 500;
-            transition: all 0.2s;
+            font-weight: 600;
+            transition: all 0.3s;
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
         }
 
         .btn-primary {
-            background: var(--accent-blue);
+            background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
             color: white;
+            box-shadow: 0 4px 12px rgba(255, 143, 163, 0.4);
         }
 
         .btn-primary:hover {
-            background: #2563eb;
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+            box-shadow: 0 6px 20px rgba(255, 143, 163, 0.6);
         }
 
         .btn-secondary {
-            background: var(--bg-card);
+            background: rgba(255, 255, 255, 0.1);
             color: var(--text-primary);
             border: 1px solid var(--border);
         }
 
         .btn-secondary:hover {
-            background: var(--border);
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
         }
 
-        /* 主容器 */
+        /* 主容器 - 等距视角办公室 */
         .main-container {
             display: grid;
-            grid-template-columns: 300px 1fr 350px;
+            grid-template-columns: 1fr 350px;
             gap: 1.5rem;
             padding: 1.5rem;
-            height: calc(100vh - 80px);
+            min-height: calc(100vh - 80px);
         }
 
-        /* 左侧面板 - Agent 列表 */
-        .sidebar-left {
-            background: var(--bg-secondary);
+        /* 办公室视图 */
+        .office-view {
+            background: rgba(22, 33, 62, 0.5);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: visible;
+            min-height: 600px;
+        }
+
+        .office-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+            padding: 2rem;
+            perspective: 1000px;
+        }
+
+        /* 等距视角工位 */
+        .desk-container {
+            position: relative;
+            transform-style: preserve-3d;
+            transition: all 0.5s ease;
+        }
+
+        .desk-container:hover {
+            transform: translateY(-10px) rotateX(5deg);
+        }
+
+        .desk {
+            position: relative;
+            background: linear-gradient(145deg, var(--macaron-blue), var(--macaron-purple));
+            border-radius: 20px;
+            padding: 2rem;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            min-height: 380px;
+            box-shadow: 
+                0 20px 60px var(--shadow),
+                0 0 0 10px rgba(255, 255, 255, 0.05),
+                inset 0 2px 10px rgba(255, 255, 255, 0.2);
+            transform: rotateX(10deg);
+            transform-style: preserve-3d;
+        }
+
+        .desk::before {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 10px;
+            right: 10px;
+            height: 20px;
+            background: linear-gradient(180deg, rgba(0,0,0,0.3), transparent);
+            border-radius: 50%;
+            filter: blur(10px);
+        }
+
+        .desk.active {
+            background: linear-gradient(145deg, var(--macaron-green), var(--macaron-blue));
+            box-shadow: 
+                0 20px 60px rgba(125, 211, 160, 0.4),
+                0 0 0 10px rgba(125, 211, 160, 0.1),
+                inset 0 2px 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .desk.busy {
+            background: linear-gradient(145deg, var(--macaron-yellow), var(--macaron-orange));
+            box-shadow: 
+                0 20px 60px rgba(240, 230, 140, 0.4),
+                0 0 0 10px rgba(240, 230, 140, 0.1),
+                inset 0 2px 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .desk-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .desk-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: white;
+            text-shadow: 0 2px 4px var(--shadow);
+        }
+
+        .desk-agent {
+            width: 50px;
+            height: 50px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            background: rgba(255, 255, 255, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+
+        .status-badge {
+            padding: 0.4rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.3);
+            color: white;
+            backdrop-filter: blur(5px);
+        }
+
+        .task-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        /* 悬浮任务卡片 */
+        .task-card {
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 12px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-left: 4px solid var(--accent-blue);
+            box-shadow: 0 4px 12px var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .task-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent, rgba(255,255,255,0.5));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .task-card:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+        }
+
+        .task-card:hover::before {
+            opacity: 1;
+        }
+
+        .task-card.priority-high {
+            border-left-color: var(--accent-pink);
+            background: linear-gradient(135deg, #fff5f7, rgba(255, 255, 255, 0.95));
+        }
+
+        .task-card.priority-medium {
+            border-left-color: var(--accent-yellow);
+            background: linear-gradient(135deg, #fffde7, rgba(255, 255, 255, 0.95));
+        }
+
+        .task-card.priority-low {
+            border-left-color: var(--accent-green);
+            background: linear-gradient(135deg, #f0fff4, rgba(255, 255, 255, 0.95));
+        }
+
+        .task-title {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+            color: #2d3748;
+        }
+
+        .task-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.75rem;
+            color: #718096;
+        }
+
+        .task-progress {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+        }
+
+        .progress-bar {
+            flex: 1;
+            height: 8px;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+            border-radius: 4px;
+            transition: width 0.5s ease;
+            box-shadow: 0 0 10px rgba(111, 163, 212, 0.5);
+        }
+
+        .progress-text {
+            font-size: 0.75rem;
+            color: #718096;
+            font-weight: 600;
+        }
+
+        /* 右侧面板 */
+        .sidebar-right {
+            background: rgba(22, 33, 62, 0.8);
+            border-radius: 20px;
             padding: 1.5rem;
             border: 1px solid var(--border);
             overflow-y: auto;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px var(--shadow);
         }
 
         .panel-title {
@@ -165,271 +399,6 @@
             color: var(--text-primary);
         }
 
-        .agent-card {
-            background: var(--bg-card);
-            border-radius: 10px;
-            padding: 1rem;
-            margin-bottom: 1rem;
-            border: 2px solid transparent;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .agent-card:hover {
-            transform: translateY(-2px);
-            border-color: var(--accent-blue);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-        }
-
-        .agent-card.active {
-            border-color: var(--accent-green);
-            background: rgba(16, 185, 129, 0.1);
-        }
-
-        .agent-card.busy {
-            border-color: var(--accent-yellow);
-            background: rgba(245, 158, 11, 0.1);
-        }
-
-        .agent-header {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .agent-avatar {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            background: var(--bg-desk);
-            border: 2px solid var(--border);
-        }
-
-        .agent-info {
-            flex: 1;
-        }
-
-        .agent-name {
-            font-weight: 600;
-            font-size: 1rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .agent-type {
-            font-size: 0.75rem;
-            color: var(--text-secondary);
-            background: var(--bg-desk);
-            padding: 0.25rem 0.5rem;
-            border-radius: 4px;
-            display: inline-block;
-        }
-
-        .agent-status {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.875rem;
-            margin-top: 0.5rem;
-        }
-
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-
-        .status-dot.online { background: var(--success); }
-        .status-dot.busy { background: var(--warning); }
-        .status-dot.offline { background: var(--error); }
-        .status-dot.idle { background: var(--accent-blue); }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        .agent-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 0.5rem;
-            margin-top: 0.75rem;
-            padding-top: 0.75rem;
-            border-top: 1px solid var(--border);
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-value {
-            font-size: 1.125rem;
-            font-weight: 600;
-            color: var(--accent-blue);
-        }
-
-        .stat-label {
-            font-size: 0.625rem;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-        }
-
-        /* 中间区域 - 虚拟办公室 */
-        .office-view {
-            background: var(--bg-secondary);
-            border-radius: 12px;
-            padding: 1.5rem;
-            border: 1px solid var(--border);
-            position: relative;
-            overflow: auto;
-        }
-
-        .office-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            padding: 1rem;
-        }
-
-        .desk {
-            background: linear-gradient(145deg, var(--bg-desk), var(--bg-card));
-            border-radius: 16px;
-            padding: 1.5rem;
-            border: 2px solid var(--border);
-            position: relative;
-            transition: all 0.3s;
-            min-height: 320px;
-        }
-
-        .desk:hover {
-            transform: translateY(-4px);
-            border-color: var(--accent-blue);
-            box-shadow: 0 8px 24px rgba(59, 130, 246, 0.3);
-        }
-
-        .desk.active {
-            border-color: var(--accent-green);
-            box-shadow: 0 8px 24px rgba(16, 185, 129, 0.3);
-        }
-
-        .desk-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-            padding-bottom: 0.75rem;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .desk-title {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-weight: 600;
-        }
-
-        .desk-agent {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.25rem;
-            background: var(--bg-secondary);
-            border: 2px solid var(--border);
-        }
-
-        .task-list {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-        }
-
-        .task-card {
-            background: var(--bg-secondary);
-            border-radius: 8px;
-            padding: 0.875rem;
-            border-left: 4px solid var(--accent-blue);
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .task-card:hover {
-            transform: translateX(4px);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-        }
-
-        .task-card.priority-high {
-            border-left-color: var(--accent-red);
-            background: rgba(239, 68, 68, 0.1);
-        }
-
-        .task-card.priority-medium {
-            border-left-color: var(--accent-yellow);
-            background: rgba(245, 158, 11, 0.1);
-        }
-
-        .task-card.priority-low {
-            border-left-color: var(--accent-green);
-        }
-
-        .task-title {
-            font-weight: 500;
-            font-size: 0.875rem;
-            margin-bottom: 0.5rem;
-            line-height: 1.4;
-        }
-
-        .task-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.75rem;
-            color: var(--text-secondary);
-        }
-
-        .task-progress {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-top: 0.5rem;
-        }
-
-        .progress-bar {
-            flex: 1;
-            height: 6px;
-            background: var(--bg-desk);
-            border-radius: 3px;
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
-            border-radius: 3px;
-            transition: width 0.3s;
-        }
-
-        .progress-text {
-            font-size: 0.75rem;
-            color: var(--text-secondary);
-        }
-
-        /* 右侧面板 - 任务详情 */
-        .sidebar-right {
-            background: var(--bg-secondary);
-            border-radius: 12px;
-            padding: 1.5rem;
-            border: 1px solid var(--border);
-            overflow-y: auto;
-        }
-
         .detail-section {
             margin-bottom: 1.5rem;
         }
@@ -440,14 +409,16 @@
             color: var(--text-secondary);
             text-transform: uppercase;
             margin-bottom: 0.75rem;
+            letter-spacing: 0.5px;
         }
 
         .detail-content {
-            background: var(--bg-card);
-            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
             padding: 1rem;
             font-size: 0.875rem;
             line-height: 1.6;
+            border: 1px solid var(--border);
         }
 
         .subtask-list {
@@ -461,25 +432,33 @@
             align-items: center;
             gap: 0.75rem;
             padding: 0.75rem;
-            background: var(--bg-desk);
-            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .subtask-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(4px);
         }
 
         .subtask-checkbox {
             width: 20px;
             height: 20px;
-            border-radius: 4px;
+            border-radius: 6px;
             border: 2px solid var(--border);
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.2s;
+            transition: all 0.3s;
+            background: rgba(255, 255, 255, 0.05);
         }
 
         .subtask-checkbox.checked {
-            background: var(--accent-green);
+            background: linear-gradient(135deg, var(--macaron-green), var(--accent-green));
             border-color: var(--accent-green);
+            box-shadow: 0 2px 8px rgba(125, 211, 160, 0.5);
         }
 
         .subtask-checkbox.checked::after {
@@ -491,6 +470,7 @@
 
         .subtask-text {
             flex: 1;
+            color: var(--text-primary);
         }
 
         .subtask-text.done {
@@ -498,45 +478,14 @@
             color: var(--text-secondary);
         }
 
-        /* 状态徽章 */
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.375rem;
-            padding: 0.25rem 0.625rem;
-            border-radius: 9999px;
-            font-size: 0.75rem;
-            font-weight: 500;
-        }
-
-        .badge-success {
-            background: rgba(34, 197, 94, 0.2);
-            color: var(--success);
-        }
-
-        .badge-warning {
-            background: rgba(245, 158, 11, 0.2);
-            color: var(--warning);
-        }
-
-        .badge-error {
-            background: rgba(239, 68, 68, 0.2);
-            color: var(--error);
-        }
-
-        .badge-info {
-            background: rgba(59, 130, 246, 0.2);
-            color: var(--accent-blue);
-        }
-
-        /* 添加任务模态框 */
+        /* 模态框 */
         .modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.8);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -544,6 +493,7 @@
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s;
+            backdrop-filter: blur(5px);
         }
 
         .modal-overlay.active {
@@ -552,14 +502,15 @@
         }
 
         .modal {
-            background: var(--bg-secondary);
-            border-radius: 16px;
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-floor));
+            border-radius: 20px;
             padding: 2rem;
             width: 90%;
             max-width: 600px;
-            border: 1px solid var(--border);
+            border: 2px solid var(--border);
             transform: scale(0.9);
             transition: all 0.3s;
+            box-shadow: 0 20px 60px var(--shadow);
         }
 
         .modal-overlay.active .modal {
@@ -576,6 +527,7 @@
         .modal-title {
             font-size: 1.25rem;
             font-weight: 600;
+            color: var(--text-primary);
         }
 
         .modal-close {
@@ -584,11 +536,11 @@
             color: var(--text-secondary);
             cursor: pointer;
             font-size: 1.5rem;
-            transition: color 0.2s;
+            transition: color 0.3s;
         }
 
         .modal-close:hover {
-            color: var(--error);
+            color: var(--accent-pink);
         }
 
         .form-group {
@@ -605,62 +557,23 @@
         .form-input, .form-select, .form-textarea {
             width: 100%;
             padding: 0.75rem;
-            background: var(--bg-card);
+            background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border);
-            border-radius: 8px;
+            border-radius: 12px;
             color: var(--text-primary);
             font-size: 0.875rem;
-            transition: all 0.2s;
+            transition: all 0.3s;
         }
 
         .form-input:focus, .form-select:focus, .form-textarea:focus {
             outline: none;
             border-color: var(--accent-blue);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+            box-shadow: 0 0 0 3px rgba(111, 163, 212, 0.2);
         }
 
         .form-textarea {
             min-height: 120px;
             resize: vertical;
-        }
-
-        /* 响应式 */
-        @media (max-width: 1400px) {
-            .main-container {
-                grid-template-columns: 280px 1fr;
-            }
-            .sidebar-right {
-                display: none;
-            }
-        }
-
-        @media (max-width: 1000px) {
-            .main-container {
-                grid-template-columns: 1fr;
-                height: auto;
-            }
-            .sidebar-left {
-                max-height: 300px;
-            }
-        }
-
-        /* 滚动条 */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--bg-primary);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--border);
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--text-secondary);
         }
 
         /* 空状态 */
@@ -674,15 +587,65 @@
             font-size: 4rem;
             margin-bottom: 1rem;
             opacity: 0.5;
+            filter: drop-shadow(0 2px 4px var(--shadow));
         }
 
         .empty-state-text {
             font-size: 1.125rem;
-            margin-bottom: 1rem;
+        }
+
+        /* 滚动条 */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-blue);
+        }
+
+        /* 装饰元素 - 地板网格 */
+        .floor-grid {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 0;
+            transform: perspective(1000px) rotateX(60deg);
+            transform-origin: bottom;
+        }
+
+        /* 响应式 */
+        @media (max-width: 1200px) {
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+            .sidebar-right {
+                max-height: 400px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- 地板网格装饰 -->
+    <div class="floor-grid"></div>
+
     <!-- 顶部导航栏 -->
     <header class="header">
         <div class="header-left">
@@ -704,7 +667,7 @@
             <button class="btn btn-primary" onclick="showAddTaskModal()">
                 ➕ 新建任务
             </button>
-            <div class="user-profile" style="display: flex; align-items: center; gap: 0.75rem; padding: 0.5rem 1rem; background: var(--bg-card); border-radius: 8px;">
+            <div class="user-profile" style="display: flex; align-items: center; gap: 0.75rem; padding: 0.5rem 1rem; background: rgba(255,255,255,0.1); border-radius: 20px; border: 1px solid var(--border);">
                 <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=ZhangBo" alt="用户头像" class="user-avatar" style="width: 32px; height: 32px; border-radius: 50%;">
                 <span class="user-name" style="font-size: 0.875rem; font-weight: 500;">ZhangBo</span>
             </div>
@@ -713,14 +676,6 @@
 
     <!-- 主容器 -->
     <div class="main-container">
-        <!-- 左侧面板 - Agent 列表 -->
-        <aside class="sidebar-left">
-            <h2 class="panel-title">🤖 Agent 团队</h2>
-            <div id="agentList">
-                <!-- Agent 卡片将通过 JS 动态加载 -->
-            </div>
-        </aside>
-
         <!-- 中间区域 - 虚拟办公室 -->
         <main class="office-view">
             <h2 class="panel-title">📋 工作台</h2>
@@ -757,7 +712,6 @@
                     <label class="form-label">分配给 Agent *</label>
                     <select class="form-select" id="taskAgent" required>
                         <option value="">选择 Agent</option>
-                        <!-- Agent 选项将动态加载 -->
                     </select>
                 </div>
                 <div class="form-group">
@@ -798,7 +752,6 @@
         // 初始化
         async function init() {
             await loadData();
-            renderAgents();
             renderOffice();
             updateAgentSelect();
             startAutoRefresh();
@@ -807,27 +760,26 @@
         // 加载数据
         async function loadData() {
             try {
-                // 加载 Agents
-                const agentsRes = await fetch('https://raw.githubusercontent.com/AprilZB/mission-control/master/data/agents.json');
-                if (agentsRes.ok) {
-                    const data = await agentsRes.json();
-                    agents = data.agents || [];
-                }
-
                 // 加载 Tasks
                 const tasksRes = await fetch('https://raw.githubusercontent.com/AprilZB/mission-control/master/data/tasks.json');
                 if (tasksRes.ok) {
                     const data = await tasksRes.json();
                     tasks = data.tasks || [];
                 }
+                
+                // 加载 Agents
+                const agentsRes = await fetch('https://raw.githubusercontent.com/AprilZB/mission-control/master/data/agents.json');
+                if (agentsRes.ok) {
+                    const data = await agentsRes.json();
+                    agents = data.agents || [];
+                }
             } catch (error) {
                 console.error('加载数据失败:', error);
-                // 使用模拟数据
                 useMockData();
             }
         }
 
-        // 模拟数据（用于测试）
+        // 模拟数据
         function useMockData() {
             agents = [
                 {
@@ -910,84 +862,52 @@
             ];
         }
 
-        // 渲染 Agent 列表
-        function renderAgents() {
-            const container = document.getElementById('agentList');
-            container.innerHTML = agents.map(agent => `
-                <div class="agent-card ${agent.status === 'active' ? 'active' : ''} ${agent.status === 'busy' ? 'busy' : ''}" 
-                     onclick="selectAgent('${agent.id}')">
-                    <div class="agent-header">
-                        <div class="agent-avatar">${agent.avatar || '🤖'}</div>
-                        <div class="agent-info">
-                            <div class="agent-name">${agent.name}</div>
-                            <span class="agent-type">${agent.type}</span>
-                        </div>
-                    </div>
-                    <div class="agent-status">
-                        <span class="status-dot ${agent.status}"></span>
-                        <span>${getStatusText(agent.status)}</span>
-                    </div>
-                    <div class="agent-stats">
-                        <div class="stat-item">
-                            <div class="stat-value">${agent.stats?.completed || 0}</div>
-                            <div class="stat-label">完成任务</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-value">${agent.stats?.avgTime || 0}s</div>
-                            <div class="stat-label">平均用时</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-value">${agent.stats?.success || 0}%</div>
-                            <div class="stat-label">成功率</div>
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-        }
-
         // 渲染办公室视图
         function renderOffice() {
             const container = document.getElementById('officeGrid');
             
-            // 按 Agent 分组任务
             const agentTasks = {};
             agents.forEach(agent => {
                 agentTasks[agent.id] = tasks.filter(t => t.assignedAgent === agent.id);
             });
 
-            container.innerHTML = agents.map(agent => `
-                <div class="desk ${agent.status === 'active' ? 'active' : ''}" onclick="selectAgent('${agent.id}')">
-                    <div class="desk-header">
-                        <div class="desk-title">
-                            <div class="desk-agent">${agent.avatar || '🤖'}</div>
-                            <span>${agent.name}的工位</span>
+            container.innerHTML = agents.map(agent => {
+                const agentTaskList = agentTasks[agent.id] || [];
+                const deskClass = agent.status === 'active' ? 'active' : agent.status === 'busy' ? 'busy' : '';
+                
+                return `
+                <div class="desk-container">
+                    <div class="desk ${deskClass}">
+                        <div class="desk-header">
+                            <div class="desk-title">
+                                <div class="desk-agent">${agent.avatar || '🤖'}</div>
+                                <span>${agent.name}的工位</span>
+                            </div>
+                            <span class="status-badge">${getStatusText(agent.status)}</span>
                         </div>
-                        <span class="badge badge-${agent.status === 'active' ? 'success' : agent.status === 'busy' ? 'warning' : 'error'}">
-                            ${getStatusText(agent.status)}
-                        </span>
-                    </div>
-                    <div class="task-list">
-                        ${agentTasks[agent.id]?.length > 0 ? 
-                            agentTasks[agent.id].map(task => `
-                                <div class="task-card priority-${task.priority}" onclick="selectTask('${task.id}', event)">
-                                    <div class="task-title">${task.title}</div>
-                                    <div class="task-meta">
-                                        <span>${getPriorityText(task.priority)}</span>
-                                        <span>${task.subtasks?.filter(s => s.done).length || 0}/${task.subtasks?.length || 0}</span>
-                                    </div>
-                                    <div class="task-progress">
-                                        <div class="progress-bar">
-                                            <div class="progress-fill" style="width: ${task.progress || 0}%"></div>
+                        <div class="task-list">
+                            ${agentTaskList.length > 0 ? 
+                                agentTaskList.map(task => `
+                                    <div class="task-card priority-${task.priority}" onclick="selectTask('${task.id}', event)">
+                                        <div class="task-title">${task.title}</div>
+                                        <div class="task-meta">
+                                            <span>${getPriorityText(task.priority)}</span>
+                                            <span>${task.subtasks?.filter(s => s.done).length || 0}/${task.subtasks?.length || 0}</span>
                                         </div>
-                                        <span class="progress-text">${task.progress || 0}%</span>
+                                        <div class="task-progress">
+                                            <div class="progress-bar">
+                                                <div class="progress-fill" style="width: ${task.progress || 0}%"></div>
+                                            </div>
+                                            <span class="progress-text">${task.progress || 0}%</span>
+                                        </div>
                                     </div>
-                                </div>
-                            `).join('') : 
-                            '<div class="empty-state" style="padding: 2rem 0;"><div>暂无任务</div></div>'
-                        }
+                                `).join('') : 
+                                '<div class="empty-state" style="padding: 2rem 0;"><div>暂无任务</div></div>'
+                            }
+                        </div>
                     </div>
                 </div>
-            `).join('');
+            `}).join('');
         }
 
         // 选择任务
@@ -1005,20 +925,19 @@
                     <div class="detail-content">
                         <div style="margin-bottom: 1rem;">
                             <strong style="color: var(--text-secondary);">标题:</strong>
-                            <div style="margin-top: 0.25rem;">${task.title}</div>
+                            <div style="margin-top: 0.25rem; color: var(--text-primary);">${task.title}</div>
                         </div>
                         <div style="margin-bottom: 1rem;">
                             <strong style="color: var(--text-secondary);">状态:</strong>
-                            <span class="badge badge-info" style="margin-left: 0.5rem;">${task.status}</span>
+                            <span style="margin-left: 0.5rem; padding: 0.25rem 0.75rem; background: rgba(111, 163, 212, 0.2); color: var(--accent-blue); border-radius: 10px; font-size: 0.75rem;">${task.status}</span>
                         </div>
                         <div style="margin-bottom: 1rem;">
                             <strong style="color: var(--text-secondary);">优先级:</strong>
-                            <span class="badge badge-${task.priority === 'high' ? 'error' : task.priority === 'medium' ? 'warning' : 'success'}" 
-                                  style="margin-left: 0.5rem;">${getPriorityText(task.priority)}</span>
+                            <span style="margin-left: 0.5rem; padding: 0.25rem 0.75rem; background: rgba(255, 143, 163, 0.2); color: var(--accent-pink); border-radius: 10px; font-size: 0.75rem;">${getPriorityText(task.priority)}</span>
                         </div>
                         <div>
                             <strong style="color: var(--text-secondary);">负责 Agent:</strong>
-                            <div style="margin-top: 0.25rem; display: flex; align-items: center; gap: 0.5rem;">
+                            <div style="margin-top: 0.25rem; display: flex; align-items: center; gap: 0.5rem; color: var(--text-primary);">
                                 <span>${agent?.avatar || '🤖'}</span>
                                 <span>${agent?.name || task.assignedAgent}</span>
                             </div>
@@ -1029,7 +948,7 @@
                 ${task.description ? `
                 <div class="detail-section">
                     <div class="detail-title">任务描述</div>
-                    <div class="detail-content">${task.description}</div>
+                    <div class="detail-content" style="color: var(--text-primary);">${task.description}</div>
                 </div>
                 ` : ''}
 
@@ -1054,13 +973,6 @@
                     </button>
                 </div>
             `;
-        }
-
-        // 选择 Agent
-        function selectAgent(agentId) {
-            const agentTasks = tasks.filter(t => t.assignedAgent === agentId);
-            console.log('选择 Agent:', agentId, '任务数:', agentTasks.length);
-            // 可以在这里添加更多 Agent 相关的操作
         }
 
         // 切换子任务状态
@@ -1119,7 +1031,6 @@
             renderOffice();
             hideAddTaskModal();
             
-            // 这里应该调用 API 保存任务
             console.log('创建任务:', newTask);
         }
 
@@ -1147,13 +1058,12 @@
         // 刷新数据
         function refreshData() {
             loadData();
-            renderAgents();
             renderOffice();
         }
 
         // 自动刷新
         function startAutoRefresh() {
-            setInterval(refreshData, 30000); // 每 30 秒刷新
+            setInterval(refreshData, 30000);
         }
 
         // 辅助函数
@@ -1174,6 +1084,232 @@
                 'low': '🟢 低'
             };
             return map[priority] || priority;
+        }
+
+        // 当前视图
+        let currentView = 'office';
+
+        // 切换视图
+        function switchView(viewName) {
+            currentView = viewName;
+            
+            // 更新导航标签状态
+            document.querySelectorAll('.nav-tab').forEach((tab, index) => {
+                const tabNames = ['office', 'tasks', 'agents', 'stats'];
+                if (tabNames[index] === viewName) {
+                    tab.classList.add('active');
+                } else {
+                    tab.classList.remove('active');
+                }
+            });
+
+            // 渲染对应视图
+            const container = document.getElementById('officeGrid');
+            if (!container) return;
+
+            if (viewName === 'office') {
+                renderOffice();
+            } else if (viewName === 'tasks') {
+                renderTaskBoard();
+            } else if (viewName === 'agents') {
+                renderAgentManagement();
+            } else if (viewName === 'stats') {
+                renderStatsReport();
+            }
+        }
+
+        // 渲染任务看板
+        function renderTaskBoard() {
+            const container = document.getElementById('officeGrid');
+            const backlogTasks = tasks.filter(t => t.status === 'backlog');
+            const inProgressTasks = tasks.filter(t => t.status === 'in_progress');
+            const doneTasks = tasks.filter(t => t.status === 'done');
+
+            container.innerHTML = `
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; height: 100%;">
+                    <div class="kanban-column">
+                        <div class="kanban-header" style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 12px; margin-bottom: 1rem; font-weight: 600;">
+                            📋 待办 (${backlogTasks.length})
+                        </div>
+                        <div class="kanban-cards" style="display: flex; flex-direction: column; gap: 0.75rem;">
+                            ${backlogTasks.map(task => `
+                                <div class="kanban-card" style="background: rgba(255,255,255,0.08); padding: 1rem; border-radius: 12px; cursor: pointer; border: 1px solid var(--border);" onclick="selectTask('${task.id}', event)">
+                                    <div style="font-weight: 600; margin-bottom: 0.5rem;">${task.title}</div>
+                                    <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-secondary);">
+                                        <span>${getPriorityText(task.priority)}</span>
+                                        <span>${task.assignedAgent || '未分配'}</span>
+                                    </div>
+                                </div>
+                            `).join('') || '<div style="color: var(--text-secondary); text-align: center; padding: 2rem;">暂无任务</div>'}
+                        </div>
+                    </div>
+                    <div class="kanban-column">
+                        <div class="kanban-header" style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 12px; margin-bottom: 1rem; font-weight: 600;">
+                            🔄 进行中 (${inProgressTasks.length})
+                        </div>
+                        <div class="kanban-cards" style="display: flex; flex-direction: column; gap: 0.75rem;">
+                            ${inProgressTasks.map(task => `
+                                <div class="kanban-card" style="background: rgba(255,255,255,0.08); padding: 1rem; border-radius: 12px; cursor: pointer; border: 1px solid var(--border);" onclick="selectTask('${task.id}', event)">
+                                    <div style="font-weight: 600; margin-bottom: 0.5rem;">${task.title}</div>
+                                    <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-secondary);">
+                                        <span>${getPriorityText(task.priority)}</span>
+                                        <span>${task.assignedAgent || '未分配'}</span>
+                                    </div>
+                                    <div class="task-progress" style="margin-top: 0.75rem;">
+                                        <div class="progress-bar" style="height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden;">
+                                            <div class="progress-fill" style="height: 100%; background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple)); width: ${task.progress || 0}%;"></div>
+                                        </div>
+                                        <div style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.25rem;">${task.progress || 0}%</div>
+                                    </div>
+                                </div>
+                            `).join('') || '<div style="color: var(--text-secondary); text-align: center; padding: 2rem;">暂无任务</div>'}
+                        </div>
+                    </div>
+                    <div class="kanban-column">
+                        <div class="kanban-header" style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 12px; margin-bottom: 1rem; font-weight: 600;">
+                            ✅ 已完成 (${doneTasks.length})
+                        </div>
+                        <div class="kanban-cards" style="display: flex; flex-direction: column; gap: 0.75rem;">
+                            ${doneTasks.map(task => `
+                                <div class="kanban-card" style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 12px; cursor: pointer; border: 1px solid var(--border); opacity: 0.7;" onclick="selectTask('${task.id}', event)">
+                                    <div style="font-weight: 600; margin-bottom: 0.5rem; text-decoration: line-through;">${task.title}</div>
+                                    <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-secondary);">
+                                        <span>${getPriorityText(task.priority)}</span>
+                                        <span>${task.assignedAgent || '未分配'}</span>
+                                    </div>
+                                </div>
+                            `).join('') || '<div style="color: var(--text-secondary); text-align: center; padding: 2rem;">暂无任务</div>'}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // 渲染 Agent 管理
+        function renderAgentManagement() {
+            const container = document.getElementById('officeGrid');
+            
+            container.innerHTML = `
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+                    ${agents.map(agent => `
+                        <div class="agent-card" style="background: rgba(255,255,255,0.08); border-radius: 16px; padding: 1.5rem; border: 1px solid var(--border);">
+                            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                                <div style="font-size: 3rem;">${agent.avatar || '🤖'}</div>
+                                <div>
+                                    <div style="font-size: 1.25rem; font-weight: 600;">${agent.name}</div>
+                                    <div style="color: var(--text-secondary); font-size: 0.875rem;">${agent.type || 'local'}</div>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap;">
+                                ${(agent.capabilities || []).map(cap => `
+                                    <span style="padding: 0.25rem 0.75rem; background: rgba(255,255,255,0.1); border-radius: 12px; font-size: 0.75rem;">${cap}</span>
+                                `).join('')}
+                            </div>
+                            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; text-align: center;">
+                                <div style="background: rgba(255,255,255,0.05); padding: 0.75rem; border-radius: 8px;">
+                                    <div style="font-size: 1.25rem; font-weight: 600; color: var(--accent-blue);">${agent.stats?.completed || 0}</div>
+                                    <div style="font-size: 0.75rem; color: var(--text-secondary);">已完成</div>
+                                </div>
+                                <div style="background: rgba(255,255,255,0.05); padding: 0.75rem; border-radius: 8px;">
+                                    <div style="font-size: 1.25rem; font-weight: 600; color: var(--accent-green);">${agent.stats?.avgTime || 0}m</div>
+                                    <div style="font-size: 0.75rem; color: var(--text-secondary);">平均耗时</div>
+                                </div>
+                                <div style="background: rgba(255,255,255,0.05); padding: 0.75rem; border-radius: 8px;">
+                                    <div style="font-size: 1.25rem; font-weight: 600; color: var(--accent-pink);">${agent.stats?.success || 0}%</div>
+                                    <div style="font-size: 0.75rem; color: var(--text-secondary);">成功率</div>
+                                </div>
+                            </div>
+                            <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center;">
+                                <span style="font-size: 0.875rem; color: var(--text-secondary);">状态：${getStatusText(agent.status)}</span>
+                                <button class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.75rem;" onclick="configureAgent('${agent.id}')">⚙️ 配置</button>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        // 渲染统计报表
+        function renderStatsReport() {
+            const container = document.getElementById('officeGrid');
+            const totalTasks = tasks.length;
+            const completedTasks = tasks.filter(t => t.status === 'done').length;
+            const inProgressTasks = tasks.filter(t => t.status === 'in_progress').length;
+            const completionRate = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
+
+            const agentStats = agents.map(agent => ({
+                name: agent.name,
+                avatar: agent.avatar,
+                completed: agent.stats?.completed || 0,
+                success: agent.stats?.success || 0
+            })).sort((a, b) => b.completed - a.completed);
+
+            container.innerHTML = `
+                <div style="display: flex; flex-direction: column; gap: 2rem;">
+                    <!-- 概览卡片 -->
+                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;">
+                        <div style="background: rgba(255,255,255,0.08); border-radius: 16px; padding: 1.5rem; text-align: center;">
+                            <div style="font-size: 2rem; font-weight: 700; color: var(--accent-blue);">${totalTasks}</div>
+                            <div style="color: var(--text-secondary); margin-top: 0.5rem;">总任务数</div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.08); border-radius: 16px; padding: 1.5rem; text-align: center;">
+                            <div style="font-size: 2rem; font-weight: 700; color: var(--accent-green);">${completedTasks}</div>
+                            <div style="color: var(--text-secondary); margin-top: 0.5rem;">已完成</div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.08); border-radius: 16px; padding: 1.5rem; text-align: center;">
+                            <div style="font-size: 2rem; font-weight: 700; color: var(--accent-yellow);">${inProgressTasks}</div>
+                            <div style="color: var(--text-secondary); margin-top: 0.5rem;">进行中</div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.08); border-radius: 16px; padding: 1.5rem; text-align: center;">
+                            <div style="font-size: 2rem; font-weight: 700; color: var(--accent-pink);">${completionRate}%</div>
+                            <div style="color: var(--text-secondary); margin-top: 0.5rem;">完成率</div>
+                        </div>
+                    </div>
+
+                    <!-- Agent 效率排行 -->
+                    <div style="background: rgba(255,255,255,0.08); border-radius: 16px; padding: 1.5rem;">
+                        <h3 style="margin-bottom: 1rem; font-size: 1.25rem;">🏆 Agent 效率排行</h3>
+                        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                            ${agentStats.map((stat, index) => `
+                                <div style="display: flex; align-items: center; gap: 1rem; padding: 0.75rem; background: rgba(255,255,255,0.05); border-radius: 12px;">
+                                    <div style="font-size: 1.5rem; font-weight: 700; width: 2rem; text-align: center; color: ${index === 0 ? 'var(--accent-yellow)' : index === 1 ? 'var(--text-secondary)' : index === 2 ? 'var(--accent-orange)' : 'var(--text-secondary)'};">${index + 1}</div>
+                                    <div style="font-size: 1.5rem;">${stat.avatar}</div>
+                                    <div style="flex: 1;">
+                                        <div style="font-weight: 600;">${stat.name}</div>
+                                        <div style="font-size: 0.75rem; color: var(--text-secondary);">成功率：${stat.success}%</div>
+                                    </div>
+                                    <div style="font-size: 1.25rem; font-weight: 600; color: var(--accent-blue);">${stat.completed} 任务</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // 配置 Agent（占位函数）
+        function configureAgent(agentId) {
+            console.log('配置 Agent:', agentId);
+            alert('Agent 配置功能开发中...');
+        }
+
+        // 绑定导航标签事件
+        function bindNavigationEvents() {
+            document.querySelectorAll('.nav-tab').forEach((tab, index) => {
+                tab.addEventListener('click', () => {
+                    const viewNames = ['office', 'tasks', 'agents', 'stats'];
+                    switchView(viewNames[index]);
+                });
+            });
+        }
+
+        // 初始化
+        async function init() {
+            await loadData();
+            renderOffice();
+            updateAgentSelect();
+            startAutoRefresh();
+            bindNavigationEvents();
         }
 
         // 启动应用

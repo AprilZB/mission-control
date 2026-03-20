@@ -90,10 +90,31 @@ _最后更新：2026-03-18_
 
 ---
 
+## ✅ 已解决问题
+
+1. **新闻简报详情链接缺失**（2026-03-20 修复）
+   - 问题：3 月 20 日的新闻没有详情链接
+   - 原因：定时任务提示词不够明确
+   - 解决：更新 `cron/jobs.json` 中的提示词，强制要求每条新闻带 `[详情](链接)` 格式
+   - 下次运行：2026-03-21 08:00
+
+## ✅ 已解决问题
+
+1. **新闻简报详情链接缺失**（2026-03-20 修复）
+   - 问题：3 月 20 日的新闻没有详情链接
+   - 原因：定时任务提示词不够明确
+   - 解决：更新 `cron/jobs.json` 中的提示词，强制要求每条新闻带 `[详情](链接)` 格式
+   - 下次运行：2026-03-21 08:00
+
+2. **Mission Control Dashboard 导航失效**（2026-03-20 修复）
+   - 问题：任务看板、Agent 管理、统计报表点击无反应
+   - 原因：导航标签未绑定点击事件处理函数
+   - 解决：添加 `switchView()` 函数和三个视图渲染函数（`renderTaskBoard()`、`renderAgentManagement()`、`renderStatsReport()`）
+   - 文件：`index.html`
+
 ## ⚠️ 待解决问题
 
-1. **OpenClaw Gateway 定时任务重复** - 用户反馈有两个重复任务，需清理
-2. **Mission Control Webhook** - OpenClaw 无内置 GitHub webhook 处理器，需实现轮询方案
+1. **Mission Control Webhook** - 轮询脚本已存在 (`scripts/poll-mission-control.js`)，但未启用。需确认 Webhook 是否正常工作，如不工作则启用轮询模式
 
 ---
 
