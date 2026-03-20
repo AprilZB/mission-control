@@ -1,0 +1,44 @@
+{
+  "version": "1.0.0",
+  "reminders": [
+    {
+      "id": "reminder_001",
+      "taskId": "ai_ppt_executive",
+      "title": "📊 AI 架构汇报 PPT 制作提醒",
+      "enabled": true,
+      "schedule": {
+        "type": "weekdays_every_2_days",
+        "time": "09:00",
+        "timezone": "Asia/Shanghai"
+      },
+      "channel": "wecom",
+      "recipient": "ZhangBo",
+      "message": "🔔 提醒：AI 架构汇报 PPT 制作任务\n\n📅 截止日期：2026-04-10\n⏰ 剩余天数：{days_left} 天\n📊 当前进度：{progress}%\n\n请尽快推进任务进展！",
+      "startDate": "2026-03-20",
+      "endDate": "2026-04-10",
+      "lastSent": "2026-03-20T01:09:58.434Z",
+      "nextSend": "2026-03-23T17:00:00.000Z",
+      "sentCount": 1
+    },
+    {
+      "id": "reminder_002",
+      "taskId": "meeting_20260319",
+      "title": "📅 会议提醒 - 明天上午 10:30",
+      "enabled": true,
+      "schedule": {
+        "type": "one_time",
+        "datetime": "2026-03-19T10:00:00+08:00"
+      },
+      "channel": "wecom",
+      "recipient": "ZhangBo",
+      "message": "🔔 会议提醒\n\n⏰ 时间：今天上午 10:30\n📍 请提前做好准备\n\n祝会议顺利！",
+      "startDate": "2026-03-19",
+      "endDate": "2026-03-19",
+      "lastSent": null,
+      "nextSend": "2026-03-19T10:00:00+08:00",
+      "sentCount": 0,
+      "oneTime": true
+    }
+  ],
+  "lastUpdated": "2026-03-20T02:09:58.284Z"
+}

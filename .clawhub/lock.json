@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "skills": {
+    "summarize": {
+      "version": "1.0.0",
+      "installedAt": 1773756362047
+    },
+    "seedance": {
+      "version": "1.0.0",
+      "installedAt": 1773756664177
+    },
+    "canvas": {
+      "version": "1.0.0",
+      "installedAt": 1773756722267
+    },
+    "tavily": {
+      "version": "1.0.0",
+      "installedAt": 1773757802483
+    },
+    "self-improving": {
+      "version": "1.2.16",
+      "installedAt": 1773757817230
+    },
+    "find-skills": {
+      "version": "0.1.0",
+      "installedAt": 1773757863003
+    },
+    "agent-browser": {
+      "version": "0.2.0",
+      "installedAt": 1773757984170
+    },
+    "mission-control": {
+      "version": "2.3.1",
+      "installedAt": 1773759148736
+    }
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "version": "1.0.0",
+  "description": "多 Agent 任务自动分配规则配置",
+  "rules": [
+    {
+      "id": "rule_001",
+      "name": "企业微信消息处理",
+      "priority": 1,
+      "conditions": {
+        "keywords": ["企业微信", "wecom", "客户消息", "回复"],
+        "channels": ["wecom"],
+        "taskTypes": ["communication", "customer_service"]
+      },
+      "action": {
+        "assignTo": "main-assistant",
+        "fallbackAgents": ["docs-assistant"],
+        "autoStart": true
+      }
+    },
+    {
+      "id": "rule_002",
+      "name": "代码开发任务",
+      "priority": 2,
+      "conditions": {
+        "keywords": ["代码", "开发", "编程", "debug", "测试", "git"],
+        "fileExtensions": [".js", ".ts", ".py", ".java", ".go", ".rs"],
+        "taskTypes": ["coding", "development"]
+      },
+      "action": {
+        "assignTo": "dev-assistant",
+        "fallbackAgents": ["main-assistant"],
+        "autoStart": false
+      }
+    },
+    {
+      "id": "rule_003",
+      "name": "文档处理任务",
+      "priority": 3,
+      "conditions": {
+        "keywords": ["文档", "写作", "总结", "翻译", "markdown"],
+        "fileExtensions": [".md", ".doc", ".docx", ".pdf", ".txt"],
+        "taskTypes": ["documentation", "writing"]
+      },
+      "action": {
+        "assignTo": "docs-assistant",
+        "fallbackAgents": ["main-assistant"],
+        "autoStart": true
+      }
+    },
+    {
+      "id": "rule_004",
+      "name": "研究分析任务",
+      "priority": 4,
+      "conditions": {
+        "keywords": ["研究", "分析", "调研", "搜索", "报告"],
+        "taskTypes": ["research", "analysis"]
+      },
+      "action": {
+        "assignTo": "research-assistant",
+        "fallbackAgents": ["docs-assistant", "main-assistant"],
+        "autoStart": false
+      }
+    },
+    {
+      "id": "rule_005",
+      "name": "文件操作任务",
+      "priority": 5,
+      "conditions": {
+        "keywords": ["文件", "读取", "写入", "编辑", "整理"],
+        "taskTypes": ["file_operations"]
+      },
+      "action": {
+        "assignTo": "main-assistant",
+        "fallbackAgents": [],
+        "autoStart": true
+      }
+    }
+  ],
+  "loadBalancing": {
+    "enabled": true,
+    "strategy": "round_robin_with_load",
+    "maxTasksPerAgent": 10,
+    "considerAgentStatus": true,
+    "considerCurrentLoad": true
+  },
+  "escalation": {
+    "enabled": true,
+    "timeoutMinutes": 30,
+    "escalateTo": "main-assistant",
+    "notifyOnEscalation": true
+  },
+  "defaultAction": {
+    "assignTo": "main-assistant",
+    "autoStart": false
+  }
+}

@@ -1,52 +1,104 @@
 {
   "tasks": [
     {
-      "id": "guide_mission_control",
-      "title": "📚 Mission Control 使用指南",
-      "description": "Mission Control 任务管理系统使用指南。完成以下步骤以设置和使用系统。\n\n**快速开始：**\n1. 完成设置步骤（GitHub Pages、Tailscale Funnel、Webhook）\n2. 在 Dashboard 创建任务\n3. 将任务拖到 \"In Progress\" 列\n4. 系统会自动处理任务\n\n**Dashboard:** https://aprilzb.github.io/mission-control/",
+      "id": "guide_onboarding",
+      "title": "🚀 Onboarding Guide — Set Up Mission Control",
+      "description": "Welcome to Mission Control! Follow these steps to complete your setup. Work through each subtask in order.",
       "status": "permanent",
       "project": "guides",
-      "tags": ["guide", "setup", "help"],
-      "subtasks": [
-        { "id": "sub_001", "title": "✅ GitHub Pages 已启用 - https://aprilzb.github.io/mission-control/", "done": true },
-        { "id": "sub_002", "title": "✅ GitHub Token 已创建", "done": true },
-        { "id": "sub_003", "title": "✅ Tailscale Funnel 已启用 - https://ap-dev.tail7de964.ts.net", "done": true },
-        { "id": "sub_004", "title": "✅ GitHub Webhook 已配置", "done": true },
-        { "id": "sub_005", "title": "⏳ Webhook 处理器 - OpenClaw 需实现轮询方案", "done": false }
-      ],
+      "tags": ["guide", "setup"],
+      "subtasks": [],
       "priority": "high",
-      "comments": [
-        {
-          "author": "Assistant",
-          "text": "设置基本完成。由于 OpenClaw 无内置 webhook 处理器，使用 HEARTBEAT.md 配置轮询检查任务变化。",
-          "timestamp": "2026-03-18T13:40:00Z"
-        }
-      ],
-      "createdAt": "2026-03-18T10:00:00Z"
+      "comments": [],
+      "createdAt": "2026-01-01T00:00:00Z"
+    },
+    {
+      "id": "guide_user",
+      "title": "📖 User Guide — How to Use Mission Control",
+      "description": "Learn how to use Mission Control effectively.",
+      "status": "permanent",
+      "project": "guides",
+      "tags": ["guide", "help"],
+      "subtasks": [],
+      "priority": "medium",
+      "comments": [],
+      "createdAt": "2026-01-01T00:00:01Z"
     },
     {
       "id": "task_example",
       "title": "示例任务 - 可删除",
-      "description": "这是一个示例任务，展示任务结构。熟悉后可以删除。\n\n**好任务的要素：**\n- 清晰的标题\n- 详细的描述\n- 可执行的子任务\n- 明确的完成标准",
+      "description": "这是一个示例任务，展示任务结构。熟悉后可以删除。",
       "status": "backlog",
       "project": "default",
       "tags": ["example"],
-      "subtasks": [
-        { "id": "sub_001", "title": "第一步", "done": false },
-        { "id": "sub_002", "title": "第二步", "done": false },
-        { "id": "sub_003", "title": "完成", "done": false }
-      ],
+      "subtasks": [],
       "priority": "low",
       "comments": [],
-      "createdAt": "2026-03-18T10:00:00Z"
+      "createdAt": "2026-01-01T00:00:02Z"
+    },
+    {
+      "id": "ai_ppt_executive",
+      "title": "📊 AI 架构汇报 PPT - 面向高层",
+      "description": "**张勃的工作任务** - 整合 AI 架构、已部署硬件、已实现 AI Agent、未来规划，制作一份面向高层汇报的 PPT。",
+      "status": "backlog",
+      "project": "executive",
+      "tags": ["ppt", "ai", "executive", "presentation", "manual"],
+      "priority": "high",
+      "assignedAgent": null,
+      "manualTask": true,
+      "dueDate": "2026-04-10",
+      "reminder": {
+        "enabled": true,
+        "frequency": "weekdays_every_2_days",
+        "time": "09:00",
+        "timezone": "Asia/Shanghai",
+        "nextReminder": "2026-03-20T09:00:00+08:00",
+        "channel": "wecom"
+      },
+      "subtasks": [
+        { "id": "sub_001", "title": "准备材料清单（AI 助手协助）", "done": false }
+      ],
+      "comments": [],
+      "createdAt": "2026-03-18T17:55:00+08:00"
+    },
+    {
+      "id": "meeting_20260319",
+      "title": "📅 会议 - 明天上午 10:30",
+      "description": "会议提醒任务",
+      "status": "backlog",
+      "project": "default",
+      "tags": ["meeting", "reminder"],
+      "priority": "high",
+      "assignedAgent": null,
+      "manualTask": true,
+      "meetingTime": "2026-03-19T10:30:00+08:00",
+      "reminder": {
+        "enabled": true,
+        "type": "one_time",
+        "beforeMinutes": 30,
+        "time": "10:00",
+        "date": "2026-03-19",
+        "timezone": "Asia/Shanghai",
+        "channel": "wecom"
+      },
+      "subtasks": [],
+      "comments": [
+        {
+          "author": "ZhangBo",
+          "text": "明天上午十点半有个会议。",
+          "timestamp": "2026-03-18T19:26:00+08:00"
+        }
+      ],
+      "createdAt": "2026-03-18T19:26:00+08:00"
     }
   ],
   "projects": [
     { "id": "guides", "name": "指南", "color": "#10b981", "icon": "📚" },
-    { "id": "default", "name": "默认项目", "color": "#3b82f6", "icon": "📁" }
+    { "id": "default", "name": "默认项目", "color": "#3b82f6", "icon": "📁" },
+    { "id": "executive", "name": "高层汇报", "color": "#8b5cf6", "icon": "📊" }
   ],
   "activities": [
-    { "type": "updated", "actor": "Assistant", "task": "合并引导任务", "time": "just now" }
+    { "type": "created", "actor": "ZhangBo", "task": "会议提醒", "time": "just now" }
   ],
-  "lastUpdated": "2026-03-18T13:40:00Z"
+  "lastUpdated": "2026-03-18T19:26:00+08:00"
 }
